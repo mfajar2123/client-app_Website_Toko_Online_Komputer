@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mii.co.id.clientappsibkm.controller;
+package com.clientappkelompok3.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
- * @author MSI-JO
+ * @author Ilham
  */
 @Controller // HTML
 public class HomeController {
     
     @GetMapping
     public String home(Model model){
-        model.addAttribute("nama", "Johan");
+        model.addAttribute("nama", "Kelompok 3");
         return "index";
     }
     

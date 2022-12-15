@@ -30,7 +30,7 @@ public class KategoriController {
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("kategoris", kategoriService.getAll());
+        model.addAttribute("kategori", kategoriService.getAll());
         return "kategori/index";
     }
 
@@ -53,7 +53,7 @@ public class KategoriController {
 
     @GetMapping("/update/{id}")
     public String updateView(@PathVariable Long id, Kategori kategori, Model model) {
-        model.addAttribute("kategoris", kategoriService.getById(id));
+        model.addAttribute("kategori", kategoriService.getById(id));
         return "kategori/update-form";
     }
 
@@ -65,7 +65,7 @@ public class KategoriController {
 
     @GetMapping("{id}")
     public String detail(@PathVariable Long id, Model model) {
-        model.addAttribute("kategoris", kategoriService.getById(id));
+        model.addAttribute("kategori", kategoriService.getById(id));
         return "kategori/detail";
     }
     
