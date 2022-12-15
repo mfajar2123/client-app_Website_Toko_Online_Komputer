@@ -1,0 +1,59 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-image: url(../image/bg.jpg);
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.box {
+    position: absolute;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.header {
+    padding: 10px 8px;
+    color: black;
+}
+
+.login-area {
+    text-align: center;
+    padding: 50px 50px 30px 50px;
+}
+
+.username,
+.password {
+    width: 100%;
+    text-align: center;
+    padding: 13px 0;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    margin-bottom: 15px;
+    background-color: rgb(80, 80, 80);
+}
+
+.username:focus,
+.password:focus {
+    background-color: rgb(114, 114, 114);
+}
+
+.submit {
+    width: 150px;
+    padding: 10px;
+    background-color: rgb(54, 190, 0);
+    color: aliceblue;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: rgb(51, 131, 19);
+}
