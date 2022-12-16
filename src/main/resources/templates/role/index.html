@@ -14,7 +14,7 @@
       crossorigin="anonymous"
     />
 
-    <title>Produk</title>
+    <title>Role</title>
   </head>
 
   <body>
@@ -58,7 +58,7 @@
     <div class="container-fluid">
       <div class="container">
         <a
-          th:href="@{/produk/produkAdd}"
+          th:href="@{/Role/RoleAdd}"
           style="margin: 20px 0"
           class="btn btn-primary"
           >Add Product</a
@@ -67,19 +67,16 @@
           <thead class="thead-light">
             <tr>
               <th scope="col">ID</th>
-              <th scope="col">Produk Name</th>
-              <th scope="col">Gambar</th>
-              <th scope="col">Harga</th>
-              <th scope="col">Kategori</th>
+              <th scope="col">Nama</th>            
               <th scope="col">Delete</th>
               <th scope="col">Update</th>
             </tr>
           </thead>
           <tbody>
-            <tr th:each="produk : ${produk}">
-              <th scope="row" th:text="${produk.id}">1</th>
-              <th th:text="${produk.nama}">Larry</th>
-              <th th:text="${produk.gambar}">
+            <tr th:each="roles : ${roles}">
+              <th scope="row" th:text="${roles.id}">1</th>
+              <th th:text="${roles.nama}">Larry</th>
+             
                 <!-- <img
                 src=""
                 height="100px"
@@ -87,17 +84,16 @@
                 th:src="@{${'/productImages/' + product.imageName}}"
               /> -->
               </th>
-              <th th:text="${produk.harga}">Larry</th>
-              <th th:text="${produk.kategori}">Larry</th>
-              <th>
+            
+              <th></th>
                 <!-- <a
                 href=""
                 th:href="@{/admin/product/delete/{id}(id=${product.id})}"
                 class="btn btn-danger"
                 >Delete</a
               > -->
-                <form
-                  th:action="@{/produk/{id} (id = ${produk.id})}"
+                <!-- <form
+                  th:action="@{/Role/{id} (id = ${Role.id})}"
                   th:method="DELETE"
                   onclick="return confirm('Are you sure delete this?')"
                 >
@@ -113,9 +109,9 @@
                 class="btn btn-warning"
                 >Update</a
               > -->
-                <a th:href="@{/produk/produkUpdate}" class="btn btn-warning"
+                <!-- <a th:href="@{/Role/RoleUpdate}" class="btn btn-warning"
                   ><i class="bi bi-pencil"></i> Update</a
-                >
+                > --> 
               </th>
             </tr>
           </tbody>

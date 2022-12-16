@@ -26,5 +26,5 @@ public class Pengguna {
     private String alamat;
     private String no_hp;
     private Boolean isAktif;
-    private List<Role> roles;
+    private Role roles;
 }
