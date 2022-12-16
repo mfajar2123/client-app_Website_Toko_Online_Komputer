@@ -32,19 +32,18 @@ public class ProdukController {
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("produks", produkService.getAll());
-        model.addAttribute("kategoris", kategoriService.getAll());
-        return "produk/produk";
+        model.addAttribute("produk", produkService.getAll());
+        model.addAttribute("kategori", kategoriService.getAll());
+        return "produk/index";
     }
 
     @GetMapping("/create")
-    public String createView(Produk produk, Model model) {
-        model.addAttribute("kategoris", kategoriService.getAll());
+    public String createView(Produk produk) {
         return "produk/produkAdd";
     }
 
     @PostMapping
-    public String create(Produk produk, Model model) {
+    public String create(Produk produk) {
         produkService.create(produk);
         return "redirect:/produk";
     }
@@ -57,8 +56,8 @@ public class ProdukController {
 
     @GetMapping("/update/{id}")
     public String updateView(@PathVariable Long id, Produk produk, Model model) {
-        model.addAttribute("produks", produkService.getById(id));
-        model.addAttribute("kategoris", kategoriService.getAll());
+        model.addAttribute("produk", produkService.getById(id));
+        model.addAttribute("kategori", kategoriService.getAll());
         return "produk/produkUpdate";
     }
 

@@ -40,30 +40,28 @@
 </nav>
 <div class="container">
     <h3>Update Product</h3>
-    <form th:action="@{/admin/products/add}" method="post" th:object="${productDTO}" enctype="multipart/form-data">
+    <form th:action="@{/produk/{id} (id = ${produk.id})}" th:method="PUT" th:object="${produk}" enctype="multipart/form-data">
         <div class="row">
             <div class="col-sm-5">
-
                 <input type="hidden" name="id" th:field="*{id}">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" required th:field="*{name}" name="name" id="name"
-                           placeholder="Enter name">
-
+                    <label for="nama">Nama</label>
+                    <input type="text" class="form-control" required th:field="*{nama}" name="nama" id="nama"
+                           placeholder="Masukkan Nama Produk">
                 </div>
                 <div class="form-group">
                     <label for="category">Select Category</label>
-                    <select class="form-control" th:field="*{categoryId}" id="category" name="category">
-                        <option th:each="category :${categories}"
-                                th:value="${category.id}"
-                                th:text="${category.name}"
+                    <select class="form-control" th:field="*{kategori.id}" id="kategori" name="kategori">
+                        <option th:each="kategori :${kategori}"
+                                th:value="${kategori.id}"
+                                th:text="${kategori.name}"
                         >
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="price">Price</label>
-                    <input type="number" class="form-control" required th:field="*{price}" name="price" id="price"
-                           placeholder="Price">
+                    <label for="harga">Harga</label>
+                    <input type="number" class="form-control" required th:field="*{harga}" name="harga" id="harga"
+                           placeholder="harga">
                 </div>
             </div>
             <div class="col-sm-5">
