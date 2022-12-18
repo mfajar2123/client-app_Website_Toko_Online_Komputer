@@ -5,23 +5,19 @@
  */
 package com.clientappkelompok3.controller;
 
-import com.clientappkelompok3.service.ProdukService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
  * @author Ilham
  */
+
 @Controller
-public class HomeController {
+public class AdminController {
     
-    private ProdukService produkService;
-    
-    @GetMapping("/home")
-    public String home(Model model){
-        model.addAttribute("produk", produkService.getAll());
-        return "index";
-    }   
+    @GetMapping("/admin")
+    public String adminHome(){
+        return "adminHome";
+    }
 }
