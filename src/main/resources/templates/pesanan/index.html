@@ -31,7 +31,7 @@
       integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
       crossorigin="anonymous"
     />
-    <title>Pengguna</title>
+    <title>Pesanan</title>
   </head>
   <body>
     <!-- Navbar -->
@@ -73,16 +73,19 @@
       </div>
     </nav>
 
-    <!-- Content Pengguna -->
+    <!-- Content Produk -->
     <div class="container py-3">
-      <table id="tabel-pengguna" class="table">
+      <table id="tabel-pesanan" class="table">
         <thead class="thead-light">
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Nama</th>
-            <th scope="col">Email</th>
+            <th scope="col">Tanggal</th>
+            <th scope="col">Pengguna</th>
             <th scope="col">Alamat</th>
-            <th scope="col">No HP</th>
+            <th scope="col">Jumlah</th>
+            <th scope="col">Total</th>
+            <th scope="col">Status Pesanan</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
       </table>
@@ -112,6 +115,6 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- <script th:src="@{/js/csrfToken.js}"></script> -->
-    <script th:src="@{/js/pengguna.js}"></script>
+    <script th:src="@{/js/pesanan.js}"></script>
   </body>
 </html>

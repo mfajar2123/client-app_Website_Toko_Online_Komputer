@@ -39,7 +39,7 @@ public class ProdukController {
 
     @GetMapping("/create")
     public String createView(Produk produk) {
-        return "produk/produkAdd";
+        return "produk/create-form";
     }
 
     @PostMapping
@@ -58,12 +58,18 @@ public class ProdukController {
     public String updateView(@PathVariable Long id, Produk produk, Model model) {
         model.addAttribute("produk", produkService.getById(id));
         model.addAttribute("kategori", kategoriService.getAll());
-        return "produk/produkUpdate";
+        return "produk/update-form";
     }
 
     @PutMapping("/{id}")
     public String update(@PathVariable Long id, Produk produk) {
         produkService.update(id, produk);
         return "redirect:/produk";
+    }
+    
+    @GetMapping("{id}")
+    public String detail(@PathVariable Long id, Model model) {
+        model.addAttribute("produk", produkService.getById(id));
+        return "produk/detail";
     }
 }

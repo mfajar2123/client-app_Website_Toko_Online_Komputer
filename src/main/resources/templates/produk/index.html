@@ -7,17 +7,34 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Bootstrap CSS -->
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-
+    <!-- Bootstrap Icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+    <!-- Datatables CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    />
     <title>Produk</title>
   </head>
-
   <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -55,88 +72,233 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid">
-      <div class="container">
-        <a
-          th:href="@{/produk/produkAdd}"
-          style="margin: 20px 0"
-          class="btn btn-primary"
-          >Add Product</a
+
+    <!-- Content Produk -->
+    <div class="container py-3">
+      <div class="container mb-5">
+        <button
+          type="button"
+          class="btn btn-success fw-bold"
+          data-bs-toggle="modal"
+          data-bs-target="#createProduk"
         >
-        <table class="table">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Produk Name</th>
-              <th scope="col">Gambar</th>
-              <th scope="col">Harga</th>
-              <th scope="col">Kategori</th>
-              <th scope="col">Delete</th>
-              <th scope="col">Update</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr th:each="produk : ${produk}">
-              <th scope="row" th:text="${produk.id}">1</th>
-              <th th:text="${produk.nama}">Larry</th>
-              <th th:text="${produk.gambar}">
-                <!-- <img
-                src=""
-                height="100px"
-                width="100px"
-                th:src="@{${'/productImages/' + product.imageName}}"
-              /> -->
-              </th>
-              <th th:text="${produk.harga}">Larry</th>
-              <th th:text="${produk.kategori}">Larry</th>
-              <th>
-                <!-- <a
-                href=""
-                th:href="@{/admin/product/delete/{id}(id=${product.id})}"
-                class="btn btn-danger"
-                >Delete</a
-              > -->
-                <form
-                  th:action="@{/produk/{id} (id = ${produk.id})}"
-                  th:method="DELETE"
-                  onclick="return confirm('Are you sure delete this?')"
-                >
-                  <button class="btn btn-danger" type="submit">
-                    <i class="bi bi-trash"></i> Delete
-                  </button>
-                </form>
-              </th>
-              <th>
-                <!-- <a
-                href=""
-                th:href="@{/admin/product/update/{id}(id=${product.id})}"
-                class="btn btn-warning"
-                >Update</a
-              > -->
-                <a th:href="@{/produk/produkUpdate}" class="btn btn-warning"
-                  ><i class="bi bi-pencil"></i> Update</a
-                >
-              </th>
-            </tr>
-          </tbody>
-        </table>
+          <i class="bi bi-plus-lg"></i> Add Produk
+        </button>
+      </div>
+      <table id="tabel-produk" class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Gambar</th>
+            <th scope="col">Harga</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+    <!-- Modal Create -->
+    <div
+      class="modal fade"
+      id="createProduk"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+              Create Produk
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="nama" class="form-label">Name</label>
+              <input type="text" class="form-control" id="input-nama" />
+            </div>
+            <div class="mb-3">
+              <label for="gambar" class="form-label">Gambar</label>
+              <input type="text" class="form-control" id="input-gambar" />
+            </div>
+            <div class="mb-3">
+              <label for="harga" class="form-label">Harga</label>
+              <input type="text" class="form-control" id="input-harga" />
+            </div>
+            <div class="mb-3">
+              <label for="kategori" class="form-label">Kategori</label>
+              <select class="form-control" id="input-kategori">
+                <option
+                  th:each="kategori : ${kategori}"
+                  th:value="${kategori.id}"
+                  th:text="${kategori.nama}"
+                ></option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" onclick="create()">
+              Save
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
+    <!-- Modal Detail -->
+    <div
+      class="modal fade"
+      id="detailProduk"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Detail Produk</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex gap-3">
+              <div>
+                <h5>ID</h5>
+                <h5>Nama</h5>
+                <h5>Gambar</h5>
+                <h5>Harga</h5>
+                <h5>Kategori</h5>
+              </div>
+              <div>
+                <h5 id="produk-id">id</h5>
+                <h5 id="produk-nama">nama</h5>
+                <h5 id="produk-gambar">gambar</h5>
+                <h5 id="produk-harga">harga</h5>
+                <h5 id="produk-kategori">kategori</h5>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Update -->
+    <div
+      class="modal fade"
+      id="updateProduk"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+              Update Produk
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="update-id" />
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama</label>
+              <input type="text" class="form-control" id="update-nama" />
+            </div>
+            <div class="mb-3">
+              <label for="gambar" class="form-label">Gambar</label>
+              <input type="text" class="form-control" id="update-gambar" />
+            </div>
+            <div class="mb-3">
+              <label for="harga" class="form-label">Harga</label>
+              <input type="text" class="form-control" id="update-harga" />
+            </div>
+            <div class="mb-3">
+              <label for="kategori" class="form-label">Kategori</label>
+              <select class="form-control" id="update-kategori">
+                <option
+                  th:each="kategori : ${kategori}"
+                  th:value="${kategori.id}"
+                  th:text="${kategori.nama}"
+                ></option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" onclick="update()">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JQuery CDN -->
     <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"
+      integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <!-- Datatables CDN -->
     <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"
     ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
+
+    <!-- SweetAlert2 CDN -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- <script th:src="@{/js/csrfToken.js}"></script> -->
+    <script th:src="@{/js/produk.js}"></script>
   </body>
 </html>
