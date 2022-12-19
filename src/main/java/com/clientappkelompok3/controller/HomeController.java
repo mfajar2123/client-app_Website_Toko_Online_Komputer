@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -28,6 +29,13 @@ public class HomeController {
     @GetMapping
     public String home(Model model) {
         model.addAttribute("produk", produkService.getAll());
+        model.addAttribute("kategori", kategoriService.getAll());
+        return "index";
+    }
+    
+    @GetMapping("/{id}")
+    public String homeByKategori(Model model, @PathVariable Long id) {
+        model.addAttribute("produk", produkService.getById(id));
         model.addAttribute("kategori", kategoriService.getAll());
         return "index";
     }
