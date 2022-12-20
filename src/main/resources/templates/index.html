@@ -52,7 +52,7 @@
             <div class="col-sm-3">
                 <h4>Categories</h4>
                 <ul class="list-group">
-                    <a th:href="@{/produk}">
+                    <a th:href="@{/home}">
                         <li class="list-group-item">All Products</li>
                     </a>
                     <a href="" th:each="kategori: ${kategori}" th:href="@{kategori/{id}(id=${kategori.id})}">

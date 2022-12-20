@@ -7,6 +7,7 @@ package com.clientappkelompok3.controller;
 
 import com.clientappkelompok3.model.Kategori;
 import com.clientappkelompok3.service.KategoriService;
+import com.clientappkelompok3.service.ProdukService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/kategori")
 public class KategoriController {
 
+    private ProdukService produkService;
     private KategoriService kategoriService;
 
     @GetMapping
@@ -63,10 +65,16 @@ public class KategoriController {
         return "redirect:/kategori";
     }
 
-    @GetMapping("{id}")
-    public String detail(@PathVariable Long id, Model model) {
-        model.addAttribute("kategori", kategoriService.getById(id));
-        return "kategori/detail";
+//    @GetMapping("{id}")
+//    public String detail(@PathVariable Long id, Model model) {
+//        model.addAttribute("kategori", kategoriService.getById(id));
+//        return "kategori/detail";
+//    }
+//    
+    @GetMapping("/{id}")
+    public String getById(Model model, @PathVariable Long id) {
+        model.addAttribute("produk", produkService.getById(id));
+        model.addAttribute("kategori", kategoriService.getAll());
+        return "index";
     }
-    
 }
