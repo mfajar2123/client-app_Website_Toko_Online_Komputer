@@ -10,9 +10,6 @@ import com.clientappkelompok3.service.PesananItemService;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,15 +26,5 @@ public class PesananItemApiController {
     @GetMapping
     public List<PesananItem> getAll() {
         return pesananItemService.getAll();
-    }
-    
-    @GetMapping("/{id}")
-    public PesananItem getById(@PathVariable Long id, PesananItem pesananItem){
-        return pesananItemService.getById(id, pesananItem);
-    }
-    
-    @PostMapping
-    public PesananItem create(@RequestBody PesananItem pesananItem){
-        return pesananItemService.create(pesananItem);
     }
 }
