@@ -42,7 +42,7 @@ public class PesananController {
     @GetMapping("/create")
     public String createView(Pesanan pesanan, Model model, Pengguna pengguna) {
         model.addAttribute("pengguna", penggunaService.getAll());
-        return "pesanan/pesananAdd";
+        return "index";
     }
 
     @PostMapping

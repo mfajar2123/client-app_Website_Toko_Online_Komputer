@@ -10,9 +10,9 @@ $('#tabel-pesanan').DataTable({
     {
       data: 'tanggal',
     },
-    {
-      data: 'pengguna',
-    },
+    // {
+    //   data: 'pengguna',
+    // },
     {
       data: 'alamat',
     },
@@ -22,9 +22,9 @@ $('#tabel-pesanan').DataTable({
     {
       data: 'total',
     },
-    {
-      data: 'statusPesanan',
-    },
+    // {
+    //   data: 'statusPesanan',
+    // },
     {
       data: null,
       render: function (data, type, row, meta) {
@@ -58,8 +58,16 @@ function findById(id) {
 }
 
 function create() {
-  let namaVal = $('#input-nama').val();
-  console.log(namaVal);
+  let tanggalVal = $('#input-tanggal').val();
+  console.log(tanggalVal);
+  // let penggunaVal = $('#input-pengguna').val();
+  // console.log(penggunaVal);
+  let alamatVal = $('#input-alamat').val();
+  console.log(alamatVal);
+  let jumlahVal = $('#input-jumlah').val();
+  console.log(jumlahVal);
+  let totalVal = $('#input-total').val();
+  console.log(totalVal);
 
   $.ajax({
     method: 'POST',
@@ -67,13 +75,21 @@ function create() {
     dataType: 'json',
     contentType: 'application/json',
     data: JSON.stringify({
-      nama: namaVal,
+      tanggal: tanggalVal,
+      // pengguna: penggunaVal,
+      alamat: alamatVal,
+      jumlah: jumlahVal,
+      total: totalVal,
     }),
     // beforeSend: addCsrfToken(),
     success: (result) => {
       $('#createpesanan').modal('hide');
       $('#tabel-pesanan').DataTable().ajax.reload();
-      $('#input-nama').val('');
+      $('#input-tanggal').val('');
+      // $('#input-pengguna').val('');
+      $('#input-alamat').val('');
+      $('#input-jumlah').val('');
+      $('#input-total').val('');
       Swal.fire({
         position: 'center',
         icon: 'success',
