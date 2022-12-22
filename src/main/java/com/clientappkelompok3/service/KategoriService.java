@@ -6,52 +6,68 @@
 package com.clientappkelompok3.service;
 
 import com.clientappkelompok3.model.Kategori;
+import com.clientappkelompok3.util.BasicHeader;
+import java.nio.charset.Charset;
 import java.util.List;
-import lombok.AllArgsConstructor;
+
+import org.apache.tomcat.util.codec.binary.Base64;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 /**
  *
- * @author Ilham
+ * @author Fajarr
  */
-
 @Service
-@AllArgsConstructor
 public class KategoriService {
-    
     private RestTemplate restTemplate;
-    
+    @Autowired
+    public KategoriService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
+    @Value("${server.baseUrl}/kategori")
+    private String url;
+
+
     public List<Kategori> getAll() {
-        return restTemplate.exchange("http://localhost:8088/kategori", HttpMethod.GET, null,
+
+        return restTemplate.exchange(url, HttpMethod.GET, new HttpEntity(BasicHeader.createHeaders()),
                 new ParameterizedTypeReference<List<Kategori>>() {
-        }).getBody();
-    }
-
-    public Kategori create(Kategori kategori) {
-        return restTemplate.exchange("http://localhost:8088/kategori", HttpMethod.POST, new HttpEntity(kategori),
-                new ParameterizedTypeReference<Kategori>() {
-        }).getBody();
-    }
-
-    public Kategori delete(Long id) {
-        return restTemplate.exchange("http://localhost:8088/kategori/" + id, HttpMethod.DELETE, null,
-                new ParameterizedTypeReference<Kategori>() {
-        }).getBody();
-    }
-
-    public Kategori update(Long id, Kategori kategori) {
-        return restTemplate.exchange("http://localhost:8088/kategori/"+ id, HttpMethod.PUT, new HttpEntity(kategori),
-                new ParameterizedTypeReference<Kategori>() {
                 }).getBody();
     }
 
     public Kategori getById(Long id) {
-        return restTemplate.exchange("http://localhost:8088/kategori/" + id, HttpMethod.GET, null,
+
+        return restTemplate.exchange(url + "/" + id, HttpMethod.GET,  new HttpEntity(BasicHeader.createHeaders()),
                 new ParameterizedTypeReference<Kategori>() {
-        }).getBody();
+                }).getBody();
     }
+
+    public Kategori create(Kategori kategori) {
+        return restTemplate.exchange(url, HttpMethod.POST, new HttpEntity(kategori, BasicHeader.createHeaders()),
+                new ParameterizedTypeReference<Kategori>() {
+                }).getBody();
+    }
+
+    public Kategori update(Long id, Kategori kategori) {
+        return restTemplate.exchange(url + "/" + id, HttpMethod.PUT,new HttpEntity(kategori, BasicHeader.createHeaders()),
+                new ParameterizedTypeReference<Kategori>() {
+                }).getBody();
+    }
+
+    public Kategori delete(Long id) {
+        return restTemplate.exchange(url + "/" + id, HttpMethod.DELETE, new HttpEntity(BasicHeader.createHeaders()),
+                new ParameterizedTypeReference<Kategori>() {
+                }).getBody();
+    }
+
 }

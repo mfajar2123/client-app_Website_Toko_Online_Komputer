@@ -48,13 +48,13 @@ public class RoleController {
 
     @GetMapping("/{id}")
     public String detail(@PathVariable Long id, Model model, Role role) {
-        model.addAttribute("role", roleService.getById(id, role));
+        model.addAttribute("role", roleService.getById(id));
         return "role/detail";
     }
 
     @GetMapping("/update/{id}")
     public String updateView(@PathVariable Long id, Role role, Model model) {
-        model.addAttribute("role", roleService.getById(id, role));
+        model.addAttribute("role", roleService.getById(id));
         return "role/update-form";
     }
     

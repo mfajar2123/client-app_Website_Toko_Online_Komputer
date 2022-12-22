@@ -82,7 +82,7 @@ function create() {
       harga: hargaVal,
       kategori: { id: kategoriVal },
     }),
-    // beforeSend: addCsrfToken(),
+    beforeSend: addCsrfToken(),
     success: (result) => {
       $('#createproduk').modal('hide');
       $('#tabel-produk').DataTable().ajax.reload();
@@ -152,7 +152,7 @@ function update() {
           harga: hargaVal,
           kategori: { id: kategoriVal },
         }),
-        // beforeSend: addCsrfToken(),
+         beforeSend: addCsrfToken(),
         success: (result) => {
           $('#table-region').DataTable().ajax.reload();
           $('#update-nama').val('');
@@ -187,7 +187,7 @@ function deleteProduk(id) {
         method: 'DELETE',
         url: 'api/produk/' + id,
         dataType: 'json',
-        // beforeSend: addCsrfToken(),
+         beforeSend: addCsrfToken(),
         success: () => {
           $('#tabel-produk').DataTable().ajax.reload();
           Swal.fire({

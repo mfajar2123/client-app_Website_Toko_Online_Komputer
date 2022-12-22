@@ -5,6 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -208,6 +212,7 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- <script th:src="@{/js/csrfToken.js}"></script> -->
+  <script th:src="@{/js/csrfToken.js}"></script>
   <script th:src="@{/js/produk.js}"></script>
 </body>
 

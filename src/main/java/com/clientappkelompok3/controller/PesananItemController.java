@@ -57,13 +57,13 @@ public class PesananItemController {
 
     @GetMapping("/{id}")
     public String getById(Model model, @PathVariable Long id, PesananItem pesananItem) {
-        model.addAttribute("pesananItem", pesananItemService.getById(id, pesananItem));
+        model.addAttribute("pesananItem", pesananItemService.getById(id));
         return "pesananItem/info-form";
     }
 
     @GetMapping("/update/{id}")
     public String updateView(@PathVariable Long id, PesananItem pesananItem, Model model) {
-        model.addAttribute("pesananItem", pesananItemService.getById(id,pesananItem));
+        model.addAttribute("pesananItem", pesananItemService.getById(id));
         model.addAttribute("pesanan", pesananService.getAll());
         model.addAttribute("produk", produkService.getAll());
         return "pesananItem/update-form";

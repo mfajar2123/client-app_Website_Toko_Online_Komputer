@@ -53,13 +53,13 @@ public class PenggunaController {
 
     @GetMapping("/{id}")
     public String getById(Model model, @PathVariable Long id, Pengguna pengguna) {
-        model.addAttribute("pengguna", penggunaService.getById(id, pengguna));
+        model.addAttribute("pengguna", penggunaService.getById(id));
         return "pengguna/info-form";
     }
 
     @GetMapping("/update/{id}")
     public String updateView(@PathVariable Long id, Pengguna pengguna, Model model) {
-        model.addAttribute("pengguna", penggunaService.getById(id,pengguna));
+        model.addAttribute("pengguna", penggunaService.getById(id));
         model.addAttribute("role", roleService.getAll());
         return "pengguna/update-form";
     }
