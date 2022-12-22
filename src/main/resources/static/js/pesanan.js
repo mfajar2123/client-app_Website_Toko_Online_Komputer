@@ -45,6 +45,46 @@ $('#tabel-pesanan').DataTable({
   ],
 });
 
+function findById(id) {
+  $.ajax({
+    method: 'GET',
+    url: 'api/pesanan/' + id,
+    dataType: 'json',
+    success: (result) => {
+      $('#pesanan-id').text(`${result.id}`);
+      $('#pesanan-nama').text(`${result.nama}`);
+    },
+  });
+}
+
+function create() {
+  let namaVal = $('#input-nama').val();
+  console.log(namaVal);
+
+  $.ajax({
+    method: 'POST',
+    url: 'api/pesanan',
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      nama: namaVal,
+    }),
+    // beforeSend: addCsrfToken(),
+    success: (result) => {
+      $('#createpesanan').modal('hide');
+      $('#tabel-pesanan').DataTable().ajax.reload();
+      $('#input-nama').val('');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Pesanan berhasil ditambahkan',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    },
+  });
+}
+
 function approvePesanan(id) {
   Swal.fire({
     title: 'Apakah anda yakin?',

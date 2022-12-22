@@ -72,7 +72,10 @@
                             <div class="card-body">
                                 <h5 class="card-title" th:text="${produk.nama}"></h5>
                                 <h4><span th:text="${produk.harga}"></span></h4>
-                                <a href="#" th:href="@{/pesananItem/create}" class="btn btn-primary">Beli</a>
+                                <button type="button" class="btn btn-primary fw-bold" data-bs-toggle="modal"
+                                    data-bs-target="#createPesanan">
+                                    <i class="bi bi-plus-lg"></i> Beli
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -94,6 +97,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script th:src="@{/js/pesanan.js}"></script>
 </body>
 
 </html>
