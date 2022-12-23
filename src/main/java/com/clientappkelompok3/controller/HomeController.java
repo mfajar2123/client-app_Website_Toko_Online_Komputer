@@ -6,6 +6,8 @@
 package com.clientappkelompok3.controller;
 
 import com.clientappkelompok3.service.KategoriService;
+import com.clientappkelompok3.service.PenggunaService;
+import com.clientappkelompok3.service.PesananService;
 import com.clientappkelompok3.service.ProdukService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -25,11 +27,14 @@ public class HomeController {
 
     private ProdukService produkService;
     private KategoriService kategoriService;
+    private PenggunaService penggunaService;
+    private PesananService pesananService;
 
     @GetMapping
     public String home(Model model) {
         model.addAttribute("produk", produkService.getAll());
         model.addAttribute("kategori", kategoriService.getAll());
+        model.addAttribute("pengguna", penggunaService.getAll());
         return "index";
     }
     

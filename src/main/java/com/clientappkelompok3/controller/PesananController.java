@@ -7,8 +7,10 @@ package com.clientappkelompok3.controller;
 
 import com.clientappkelompok3.model.Pengguna;
 import com.clientappkelompok3.model.Pesanan;
+import com.clientappkelompok3.model.Produk;
 import com.clientappkelompok3.service.PenggunaService;
 import com.clientappkelompok3.service.PesananService;
+import com.clientappkelompok3.service.ProdukService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +32,7 @@ public class PesananController {
 
     private PesananService pesananService;
     private PenggunaService penggunaService;
+    private ProdukService produkService;
     
 
     @GetMapping
@@ -40,8 +43,9 @@ public class PesananController {
     }
 
     @GetMapping("/create")
-    public String createView(Pesanan pesanan, Model model, Pengguna pengguna) {
+    public String createView(Pesanan pesanan, Model model, Pengguna pengguna, Produk produk) {
         model.addAttribute("pengguna", penggunaService.getAll());
+        model.addAttribute("produk", produkService.getAll());
         return "index";
     }
 

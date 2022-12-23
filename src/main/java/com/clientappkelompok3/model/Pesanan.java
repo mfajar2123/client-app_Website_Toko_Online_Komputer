@@ -5,8 +5,6 @@
  */
 package com.clientappkelompok3.model;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,4 +22,6 @@ public class Pesanan {
     private String email;
     private String alamat;
     private Pengguna pengguna;
+    private Produk produk;
+    private int jumlah;
 }
