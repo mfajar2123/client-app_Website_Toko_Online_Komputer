@@ -51,12 +51,10 @@
       <thead class="thead-light">
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">Tanggal</th>
-          <!-- <th scope="col">Pengguna</th> -->
+          <th scope="col">Nama</th>
+          <th scope="col">Email</th>
           <th scope="col">Alamat</th>
-          <th scope="col">Jumlah</th>
-          <th scope="col">Total</th>
-          <!-- <th scope="col">Status Pesanan</th> -->
+          <th scope="col">Pengguna</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -64,7 +62,7 @@
   </div>
 
   <!-- Modal Create -->
-  <div class="modal fade" id="createKategori" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  <div class="modal fade" id="createPesanan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -75,33 +73,21 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <!-- <div class="mb-3">
-            <label for="nama" class="form-label">Name</label>
+          <div class="mb-3">
+            <label for="nama" class="form-label">Nama</label>
             <input type="text" class="form-control" id="input-nama" />
-          </div> -->
-          <div class="mb-3">
-            <label for="nama" class="form-label">Tanggal</label>
-            <input type="text" class="form-control" id="input-tanggal" />
           </div>
           <div class="mb-3">
-            <label for="nama" class="form-label">Pengguna</label>
-            <input type="text" class="form-control" id="input-pengguna" />
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="input-email" />
           </div>
           <div class="mb-3">
-            <label for="nama" class="form-label">Alamat</label>
+            <label for="alamat" class="form-label">Alamat</label>
             <input type="text" class="form-control" id="input-alamat" />
           </div>
           <div class="mb-3">
-            <label for="nama" class="form-label">Jumlah</label>
-            <input type="text" class="form-control" id="input-jumlah" />
-          </div>
-          <div class="mb-3">
-            <label for="nama" class="form-label">Total</label>
-            <input type="text" class="form-control" id="input-total" />
-          </div>
-          <div class="mb-3">
-            <label for="nama" class="form-label">Status Pesanan</label>
-            <input type="text" class="form-control" id="input-status pesanan" />
+            <label for="pengguna" class="form-label">Pengguna</label>
+            <input type="text" class="form-control" id="input-pengguna" />
           </div>
         </div>
         <div class="modal-footer">
@@ -117,60 +103,7 @@
   </div>
 
 
-  <!-- Modal Update -->
-  <div class="modal fade" id="updateKategori" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-            Update Kategori
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <input type="hidden" id="update-id" />
-          <!-- <div class="mb-3">
-            <label for="nama" class="form-label">Name</label>
-            <input type="text" class="form-control" id="input-nama" />
-          </div> -->
-          <div class="mb-3">
-            <label for="nama" class="form-label">Tanggal</label>
-            <input type="text" class="form-control" id="input-tanggal" />
-          </div>
-          <div class="mb-3">
-            <label for="nama" class="form-label">Pengguna</label>
-            <input type="text" class="form-control" id="input-pengguna" />
-          </div>
-          <div class="mb-3">
-            <label for="nama" class="form-label">Alamat</label>
-            <input type="text" class="form-control" id="input-alamat" />
-          </div>
-          <div class="mb-3">
-            <label for="nama" class="form-label">Jumlah</label>
-            <input type="text" class="form-control" id="input-jumlah" />
-          </div>
-          <div class="mb-3">
-            <label for="nama" class="form-label">Total</label>
-            <input type="text" class="form-control" id="input-total" />
-          </div>
-          <div class="mb-3">
-            <label for="nama" class="form-label">Status Pesanan</label>
-            <input type="text" class="form-control" id="input-status pesanan" />
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            Close
-          </button>
-          <button type="button" class="btn btn-primary" onclick="update()">
-            Save
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  
   <!-- JQuery CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"
     integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A=="

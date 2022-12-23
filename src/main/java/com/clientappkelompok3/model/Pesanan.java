@@ -20,11 +20,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Pesanan {
     private Long id;
-    private String nomor;
-    private Date tanggal;
+    private String nama;
+    private String email;
     private String alamat;
-    private int jumlah;
-    private BigDecimal total;
-    private StatusPesanan statusPesanan;
     private Pengguna pengguna;
 }
