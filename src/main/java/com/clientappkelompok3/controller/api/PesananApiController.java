@@ -34,7 +34,7 @@ public class PesananApiController {
     }
 
     @GetMapping("/{id}")
-    public Pesanan getById(@PathVariable Long id, Pesanan pesanan) {
+    public Pesanan getById(@PathVariable Long id, Pesanan pesanan){
         return pesananService.getById(id, pesanan);
     }
 
