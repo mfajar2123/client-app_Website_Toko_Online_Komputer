@@ -8,27 +8,26 @@ $('#tabel-pesanan').DataTable({
       data: 'id',
     },
     {
-      data: 'tanggal',
+      data: 'nama',
     },
     {
-      data: 'pengguna',
+      data: 'email',
     },
     {
       data: 'alamat',
     },
     {
-      data: 'jumlah',
-    },
-    {
-      data: 'total',
-    },
-    {
-      data: 'statusPesanan',
-    },
-    {
       data: null,
       render: function (data, type, row, meta) {
         return `<button
+                  type="button"
+                  class="btn btn-info"
+                  data-bs-toggle="modal"
+                  data-bs-target="#detailPesanan" 
+                  onclick="findById(${data.id})">
+                  <i class="bi bi-info-circle"></i>
+                  </button>
+                  <button
                   type="button"
                   class="btn btn-primary"
                   onclick="approvePesanan(${data.id})">
@@ -44,6 +43,71 @@ $('#tabel-pesanan').DataTable({
     },
   ],
 });
+
+function findById(id) {
+  $.ajax({
+    method: 'GET',
+    url: 'api/pesanan/' + id,
+    dataType: 'json',
+    success: (result) => {
+      $('#pesanan-id').text(`${result.id}`);
+      $('#pesanan-nama').text(`${result.nama}`);
+      $('#pesanan-email').text(`${result.email}`);
+      $('#pesanan-alamat').text(`${result.alamat}`);
+      $('#pesanan-produk').text(`${result.produk.nama}`);
+      $('#pesanan-jumlah').text(`${result.jumlah}`);
+      $('#pesanan-pengguna').text(`${result.pengguna.nama}`);
+    },
+  });
+}
+
+function create() {
+  let namaVal = $('#input-nama').val();
+  console.log(namaVal);
+  let emailVal = $('#input-email').val();
+  console.log(emailVal);
+  let alamatVal = $('#input-alamat').val();
+  console.log(alamatVal);
+  let produkVal = $('#input-produk').val();
+  console.log(produkVal);
+  let jumlahVal = $('#input-jumlah').val();
+  console.log(jumlahVal);
+  let penggunaVal = $('#input-pengguna').val();
+  console.log(penggunaVal);
+
+  $.ajax({
+    method: 'POST',
+    url: 'api/pesanan',
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      nama: namaVal,
+      email: emailVal,
+      alamat: alamatVal,
+      produk: { id: produkVal },
+      jumlah: jumlahVal,
+      pengguna: { id: penggunaVal },
+    }),
+    // beforeSend: addCsrfToken(),
+    success: (result) => {
+      $('#createpesanan').modal('hide');
+      $('#tabel-pesanan').DataTable().ajax.reload();
+      $('#input-nama').val('');
+      $('#input-email').val('');
+      $('#input-alamat').val('');
+      $('#input-produk').val('');
+      $('#input-jumlah').val('');
+      $('#input-pengguna').val('');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Pesanan berhasil ditambahkan',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    },
+  });
+}
 
 function approvePesanan(id) {
   Swal.fire({

@@ -33,6 +33,7 @@
     />
     <title>Pesanan</title>
   </head>
+
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -73,22 +74,73 @@
       </div>
     </nav>
 
-    <!-- Content Produk -->
+    <!-- Content pesanan -->
     <div class="container py-3">
       <table id="tabel-pesanan" class="table">
         <thead class="thead-light">
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Tanggal</th>
-            <th scope="col">Pengguna</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Email</th>
             <th scope="col">Alamat</th>
-            <th scope="col">Jumlah</th>
-            <th scope="col">Total</th>
-            <th scope="col">Status Pesanan</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
       </table>
+    </div>
+
+    <!-- Modal Detail -->
+    <div
+      class="modal fade"
+      id="detailPesanan"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Detail Pesanan</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex gap-3">
+              <div>
+                <h5>ID</h5>
+                <h5>Nama</h5>
+                <h5>Email</h5>
+                <h5>Alamat</h5>
+                <h5>Produk</h5>
+                <h5>Jumlah</h5>
+                <h5>Pengguna</h5>
+              </div>
+              <div>
+                <h5 id="pesanan-id">id</h5>
+                <h5 id="pesanan-nama">nama</h5>
+                <h5 id="pesanan-email">email</h5>
+                <h5 id="pesanan-alamat">alamat</h5>
+                <h5 id="pesanan-produk">produk</h5>
+                <h5 id="pesanan-jumlah">jumlah</h5>
+                <h5 id="pesanan-pengguna">pengguna</h5>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- JQuery CDN -->
