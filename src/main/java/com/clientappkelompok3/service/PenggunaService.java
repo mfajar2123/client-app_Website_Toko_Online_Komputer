@@ -21,7 +21,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import static org.springframework.web.servlet.function.RequestPredicates.headers;
 
 /**
  *
@@ -40,16 +39,14 @@ public class PenggunaService {
 
 
     public List<Pengguna> getAll() {
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.add("Authorization", "Basic a2hhbGlzYTpraGFsaXNh");// Khalisa (Basic Authentication) username:password
+
         return restTemplate.exchange(url, HttpMethod.GET, new HttpEntity(BasicHeader.createHeaders()),
                 new ParameterizedTypeReference<List<Pengguna>>() {
                 }).getBody();
     }
 
     public Pengguna getById(Long id) {
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.add("Authorization", "Basic a2hhbGlzYTpraGFsaXNh");
+
         return restTemplate.exchange(url + "/" + id, HttpMethod.GET,  new HttpEntity(BasicHeader.createHeaders()),
                 new ParameterizedTypeReference<Pengguna>() {
                 }).getBody();

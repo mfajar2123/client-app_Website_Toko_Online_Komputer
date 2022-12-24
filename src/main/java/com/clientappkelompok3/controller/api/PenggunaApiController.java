@@ -6,7 +6,6 @@
 package com.clientappkelompok3.controller.api;
 
 import com.clientappkelompok3.model.Pengguna;
-import com.clientappkelompok3.model.Pengguna;
 import com.clientappkelompok3.service.PenggunaService;
 import java.util.List;
 import lombok.AllArgsConstructor;

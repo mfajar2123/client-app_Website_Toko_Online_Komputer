@@ -55,6 +55,7 @@ function findById(id) {
 function create() {
   let namaVal = $('#input-nama').val();
   console.log(namaVal);
+  
 
   $.ajax({
     method: 'POST',
@@ -64,7 +65,7 @@ function create() {
     data: JSON.stringify({
       nama: namaVal,
     }),
-    // beforeSend: addCsrfToken(),
+    beforeSend: addCsrfToken(),
     success: (result) => {
       $('#createkategori').modal('hide');
       $('#tabel-kategori').DataTable().ajax.reload();
@@ -119,9 +120,9 @@ function update() {
         data: JSON.stringify({
           nama: namaVal,
         }),
-        // beforeSend: addCsrfToken(),
+        beforeSend: addCsrfToken(),
         success: (result) => {
-          $('#table-region').DataTable().ajax.reload();
+          $('#tabel-kategori').DataTable().ajax.reload();
           $('#update-nama').val('');
           Swal.fire({
             position: 'center',
@@ -151,7 +152,7 @@ function deleteKategori(id) {
         method: 'DELETE',
         url: 'api/kategori/' + id,
         dataType: 'json',
-        // beforeSend: addCsrfToken(),
+        beforeSend: addCsrfToken(),
         success: () => {
           $('#tabel-kategori').DataTable().ajax.reload();
           Swal.fire({

@@ -19,7 +19,7 @@ function create() {
       alamat: alamatVal,
       // pengguna: { id: penggunaVal },
     }),
-    // beforeSend: addCsrfToken(),
+    beforeSend: addCsrfToken(),
     success: (result) => {
       $('#createpesanan').modal('hide');
       $('#tabel-pesanan').DataTable().ajax.reload();
