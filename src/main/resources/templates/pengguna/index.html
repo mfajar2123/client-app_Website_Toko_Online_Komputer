@@ -60,9 +60,52 @@
           <th scope="col">Email</th>
           <th scope="col">Alamat</th>
           <th scope="col">No HP</th>
+          <th scope="col">Update</th>
         </tr>
       </thead>
     </table>
+  </div>
+
+  <!-- Modal Update -->
+  <div class="modal fade" id="updatePengguna" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+            Update Pengguna
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="update-id" />
+          <div class="mb-3">
+            <label for="nama" class="form-label">Nama</label>
+            <input type="text" class="form-control" id="update-nama" />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="update-email" />
+          </div>
+          <div class="mb-3">
+            <label for="alamat" class="form-label">Alamat</label>
+            <input type="text" class="form-control" id="update-alamat" />
+          </div>
+          <div class="mb-3">
+            <label for="nohp" class="form-label">No Hp</label>
+            <input type="text" class="form-control" id="update-nohp" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary" onclick="update()">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- JQuery CDN -->
