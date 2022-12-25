@@ -82,7 +82,7 @@ function create() {
       harga: hargaVal,
       kategori: { id: kategoriVal },
     }),
-    beforeSend: addCsrfToken(),
+     beforeSend: addCsrfToken(),
     success: (result) => {
       $('#createproduk').modal('hide');
       $('#tabel-produk').DataTable().ajax.reload();
