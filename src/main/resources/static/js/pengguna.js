@@ -32,7 +32,7 @@ $('#tabel-pengguna').DataTable({
                 <i class="bi bi-pencil"></i> Edit
                 </button>                
                 `;
-      }
+      },
     },
   ],
 });
@@ -47,7 +47,7 @@ function beforeUpdate(id) {
       $('#update-nama').val(`${result.nama}`);
       $('#update-email').val(`${result.email}`);
       $('#update-alamat').val(`${result.alamat}`);
-      $('#update-nohp').val(`${result.nohp}`);
+      $('#update-nohp').val(`${result.no_hp}`);
     },
   });
 }
@@ -84,11 +84,17 @@ function update() {
         contentType: 'application/json',
         data: JSON.stringify({
           nama: namaVal,
+          email: emailVal,
+          alamat: alamatVal,
+          no_hp: nohpVal,
         }),
         beforeSend: addCsrfToken(),
         success: (result) => {
           $('#tabel-pengguna').DataTable().ajax.reload();
           $('#update-nama').val('');
+          $('#update-email').val('');
+          $('#update-alamat').val('');
+          $('#update-nohp').val('');
           Swal.fire({
             position: 'center',
             icon: 'success',

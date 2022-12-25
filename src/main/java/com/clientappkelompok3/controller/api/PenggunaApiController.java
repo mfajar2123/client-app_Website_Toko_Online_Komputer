@@ -10,6 +10,9 @@ import com.clientappkelompok3.service.PenggunaService;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,5 +29,15 @@ public class PenggunaApiController {
     @GetMapping
     public List<Pengguna> getAll() {
         return penggunaService.getAll();
+    }
+    
+    @GetMapping("/{id}")
+    public Pengguna getById(@PathVariable Long id){
+        return penggunaService.getById(id);
+    }
+    
+    @PutMapping("/{id}")
+    public Pengguna update(@PathVariable Long id, @RequestBody Pengguna pengguna){
+        return penggunaService.update(id,pengguna);
     }
 }
