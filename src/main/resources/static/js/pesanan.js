@@ -120,27 +120,27 @@ function approvePesanan(id) {
     confirmButtonText: 'Ya, Setuju!',
   }).then((result) => {
     if (result.isConfirmed) {
-      // $.ajax({
-      //   method: 'DELETE',
-      //   url: 'api/pesanan/' + id,
-      //   dataType: 'json',
-      //   // beforeSend: addCsrfToken(),
-      //   success: () => {
-      //     $('#tabel-pesanan').DataTable().ajax.reload();
-      //     Swal.fire({
-      //       icon: 'success',
-      //       title: 'Pesanan telah disetujui.',
-      //       width: 600,
-      //       padding: '3em',
-      //       color: '#716add',
-      //       backdrop: `rgba(0,0,123,0.4)
-      //         url("https://sweetalert2.github.io/images/nyan-cat.gif")
-      //         left top no-repeat`,
-      //       showConfirmButton: false,
-      //       timer: 1500,
-      //     });
-      //   },
-      // });
+      $.ajax({
+        method: 'GET',
+        url: 'api/pesanan/' + id,
+        dataType: 'json',
+        success: (result) => {
+          $('#pesanan-id').text(`${result.id}`);
+          $('#pesanan-nama').text(`${result.nama}`);
+          Swal.fire({
+            icon: 'success',
+            title: 'Pesanan telah disetujui.',
+            width: 600,
+            padding: '3em',
+            color: '#716add',
+            backdrop: `rgba(0,0,123,0.4)
+              url("https://sweetalert2.github.io/images/nyan-cat.gif")
+              left top no-repeat`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        },
+      });
     }
   });
 }
@@ -156,24 +156,24 @@ function disapprovePesanan(id) {
     confirmButtonText: 'Ya, Tolak!',
   }).then((result) => {
     if (result.isConfirmed) {
-      // $.ajax({
-      //   method: 'DELETE',
-      //   url: 'api/pesanan/' + id,
-      //   dataType: 'json',
-      //   // beforeSend: addCsrfToken(),
-      //   success: () => {
-      //     $('#tabel-pesanan').DataTable().ajax.reload();
-      //     Swal.fire({
-      //       icon: 'success',
-      //       title: 'Pesanan telah ditolak.',
-      //       width: 600,
-      //       padding: '3em',
-      //       color: '#716add',
-      //       showConfirmButton: false,
-      //       timer: 1500,
-      //     });
-      //   },
-      // });
+      $.ajax({
+        method: 'DELETE',
+        url: 'api/pesanan/' + id,
+        dataType: 'json',
+        beforeSend: addCsrfToken(),
+        success: () => {
+          $('#tabel-pesanan').DataTable().ajax.reload();
+          Swal.fire({
+            icon: 'success',
+            title: 'Pesanan telah ditolak.',
+            width: 600,
+            padding: '3em',
+            color: '#716add',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        },
+      });
     }
   });
 }

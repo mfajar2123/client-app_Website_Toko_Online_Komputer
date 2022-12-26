@@ -69,7 +69,13 @@
               <a class="nav-link" th:href="@{/admin}" href="#">admin-home</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" th:href="@{/logout}" href="#">logout</a>
+              <div class="me-2">
+                <form th:action="@{/logout}" th:method="POST">
+                  <button type="submit" class="btn btn-outline-danger">
+                    Logout
+                  </button>
+                </form>
+              </div>
             </li>
           </ul>
         </div>

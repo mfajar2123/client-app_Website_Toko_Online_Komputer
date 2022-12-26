@@ -55,7 +55,6 @@ function findById(id) {
 function create() {
   let namaVal = $('#input-nama').val();
   console.log(namaVal);
-  
 
   $.ajax({
     method: 'POST',

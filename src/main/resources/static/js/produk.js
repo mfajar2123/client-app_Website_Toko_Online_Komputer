@@ -154,7 +154,7 @@ function update() {
         }),
          beforeSend: addCsrfToken(),
         success: (result) => {
-          $('#table-region').DataTable().ajax.reload();
+          $('#tabel-produk').DataTable().ajax.reload();
           $('#update-nama').val('');
           $('#update-gambar').val('');
           $('#update-harga').val('');
